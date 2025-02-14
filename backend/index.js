@@ -1,3 +1,17 @@
+const pool = require("./database/db");
+
+async function testDBConnection() {
+  try {
+    const result = await pool.query("SELECT NOW()"); 
+    console.log("✅ Conexión exitosa a PostgreSQL. Fecha actual:", result.rows[0].now);
+  } catch (err) {
+    console.error("❌ Error al conectar con PostgreSQL:", err);
+  }
+}
+
+testDBConnection();
+/*
+
 const express = require("express");
 const cors = require("cors");
 const pool = require("./database/db");
@@ -35,3 +49,4 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
+*/
