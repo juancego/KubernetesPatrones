@@ -20,13 +20,14 @@ testDBConnection();
 // Obtener todos los nombres
 app.get("/api/names", async (req, res) => {
   try {
-    const result = await pool.query("SELECT nombre FROM nombres");
+    const result = await pool.query("SELECT id, nombre FROM nombres");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error al obtener los nombres" });
   }
 });
+
 
 // Agregar un nuevo nombre
 app.post("/api/names", async (req, res) => {
