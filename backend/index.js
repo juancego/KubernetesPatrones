@@ -1,5 +1,11 @@
+
+const express = require("express");
+const cors = require("cors");
 const pool = require("./database/db");
 
+const app = express();
+app.use(cors());
+app.use(express.json()); // Para manejar JSON
 async function testDBConnection() {
   try {
     const result = await pool.query("SELECT NOW()"); 
@@ -10,15 +16,6 @@ async function testDBConnection() {
 }
 
 testDBConnection();
-
-
-const express = require("express");
-const cors = require("cors");
-const pool = require("./database/db");
-
-const app = express();
-app.use(cors());
-app.use(express.json()); // Para manejar JSON
 
 // Obtener todos los nombres
 app.get("/api/names", async (req, res) => {
