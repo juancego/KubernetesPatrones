@@ -7,7 +7,7 @@ const App = () => {
   const [nombres, setNombres] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/names").then((res) => setNombres(res.data));
+    axios.get("https://kubernetes-back-production.up.railway.app/api/names").then((res) => setNombres(res.data));
   }, []);
 
   return (

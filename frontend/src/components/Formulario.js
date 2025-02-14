@@ -6,15 +6,20 @@ const Formulario = ({ setNombres }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost/api/names", { name: nombre });
-    setNombres((prev) => [...prev, res.data]);
-    setNombre("");
+    if (!nombre.trim()) return;
+
+    try {
+      const res = await axios.post("https://kubernetes-back-production.up.railway.app/api/names", { name: nombre });
+      setNombres(prev => [...prev, res.data]); // Agregar al estado
+      setNombre(""); // Limpiar input
+    } catch (error) {
+      console.error("Error al guardar el nombre", error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Nombre:</label>
-      <input value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
       <button type="submit">Guardar</button>
     </form>
   );

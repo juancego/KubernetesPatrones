@@ -22,7 +22,7 @@ app.post("/api/names", async (req, res) => {
     try {
       console.log("Recibido en backend:", req.body); // Verificar qué datos llegan
       const { name } = req.body;
-      const result = await pool.query("INSERT INTO nombres (name) VALUES ($1) RETURNING *", [name]);
+      const result = await pool.query("INSERT INTO nombres (nombre) VALUES ($1) RETURNING *", [name]);
       res.json(result.rows[0]);
     } catch (err) {
       console.error("Error en backend:", err);
