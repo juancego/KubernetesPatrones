@@ -20,7 +20,7 @@ testDBConnection();
 // Obtener todos los nombres
 app.get("/api/names", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM nombres");
+    const result = await pool.query("SELECT nombre FROM nombres");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
