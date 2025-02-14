@@ -8,7 +8,7 @@ const ListaNombres = ({ nombres }) => {
       <h2>Lista de Nombres</h2>
       <ul>
         {nombres.length > 0 ? (
-          nombres.map((item) => <li key={item.id}>{item.nombre}</li>)
+          nombres.map((item, index) => <li key={item.id || index}>{item.nombre}</li>)
         ) : (
           <p>⏳ Cargando o no hay nombres disponibles...</p>
         )}
