@@ -1,19 +1,19 @@
 import React from "react";
 
 const ListaNombres = ({ nombres }) => {
-  console.log("ListaNombres recibió:", nombres);
-
-  if (!Array.isArray(nombres)) {
-    console.error("⚠️ ERROR: nombres no es un array", nombres);
-    return <p>Error al cargar nombres</p>;
-  }
+  console.log("📢 Nombres recibidos en ListaNombres:", nombres); // Verifica los datos
 
   return (
-    <ul>
-      {nombres.map((n, index) => (
-        <li key={index}>{n.name}</li>
-      ))}
-    </ul>
+    <div>
+      <h2>Lista de Nombres</h2>
+      <ul>
+        {nombres.length > 0 ? (
+          nombres.map((item) => <li key={item.id}>{item.nombre}</li>)
+        ) : (
+          <p>⏳ Cargando o no hay nombres disponibles...</p>
+        )}
+      </ul>
+    </div>
   );
 };
 
