@@ -1,22 +1,21 @@
-# Imagen base de Node.js
-FROM node:18
-
-# Establecer directorio de trabajo
+# Etapa de construcción
+FROM node:18 AS build
 WORKDIR /app
 
-# Copiar archivos y paquetes
-COPY package.json ./
+# Copiar archivos y paquetes antes de instalar
+COPY package.json package-lock.json ./
 RUN npm install
 
-# Copiar el resto del código
+# Copiar el resto del código y construir
 COPY . .
-
-# Construcción de la aplicación
 RUN npm run build
 
-# Servir la app en un servidor web estático
-RUN npm install -g serve
-CMD ["serve", "-s", "build"]
+# Etapa de servidor web con Nginx
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Exponer puerto
-EXPOSE 3000
+# Exponer el puerto 80 para servir la aplicación
+EXPOSE 80
+
+# Comando para iniciar Nginx
+CMD ["nginx", "-g", "daemon off;"]
