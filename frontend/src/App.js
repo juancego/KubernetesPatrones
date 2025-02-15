@@ -15,6 +15,7 @@ const App = () => {
   return (
     <div>
       <h1>Formulario</h1>
+      <h2>Nombre:</h2>
       <Formulario setNombres={setNombres} />
       <ListaNombres nombres={nombres} />
     </div>
