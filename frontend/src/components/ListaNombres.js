@@ -11,4 +11,3 @@ const ListaNombres = ({ nombres }) => {
 };
 
 export default ListaNombres;
-

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Formulario from "./components/Formulario";
 import ListaNombres from "./components/ListaNombres";
+import "./index.css";
+
 
 const App = () => {
   const [nombres, setNombres] = useState([]);
