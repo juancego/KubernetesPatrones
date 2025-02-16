@@ -4,7 +4,7 @@ const ListaNombres = ({ nombres }) => {
   return (
     <ul>
       {nombres.map((item, index) => (
-        <li key={index}>{item.nombre}</li>
+          <li key={index}>{item.value ? item.value : "Sin nombre"}</li>
       ))}
     </ul>
   );
