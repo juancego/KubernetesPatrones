@@ -9,7 +9,7 @@ const Formulario = ({ setNombres }) => {
     if (!nombre.trim()) return;
 
     try {
-      const res = await axios.post("http://152.42.154.220/api/names", { value: nombre });
+      const res = await axios.post("/api/names", { value: nombre });
       setNombres(prev => [...prev, res.data]); // Agregar al estado
       setNombre(""); // Limpiar input
     } catch (error) {
