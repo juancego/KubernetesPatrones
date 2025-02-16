@@ -9,7 +9,7 @@ const App = () => {
   const [nombres, setNombres] = useState([]);
 
   useEffect(() => {
-    axios.get("http://152.42.154.220/api").then((res) => setNombres(res.data));
+    axios.get("http://152.42.154.220/api/names").then((res) => setNombres(res.data));
   }, []);
 
   return (
