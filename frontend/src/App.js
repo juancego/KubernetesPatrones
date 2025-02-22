@@ -9,7 +9,7 @@ const App = () => {
   const [nombres, setNombres] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/names").then((res) => setNombres(res.data));
+    axios.get("https://apik8s.duckdns.org/api/names").then((res) => setNombres(res.data));
   }, []);
 
   return (
